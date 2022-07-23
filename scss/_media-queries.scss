@@ -1,0 +1,265 @@
+//media queries que no pude evitar :(
+    
+@media screen and (max-width: 992px){
+    header{
+        nav{
+            .burger{
+                display: flex;
+            }
+            .nav-menu{
+                position: fixed;
+                top: -100%;
+                left: 0;
+                gap: 1rem;
+                height: 400px;
+                flex-direction: column;
+                background-color: #0F0E0E;
+                width: 95%;
+                border-radius: 15px;
+                margin-left: 2.5%;
+                justify-content: center;
+                li{
+                    &:hover::before{
+                        width: 0%;
+                      }
+                    margin-left: 30%;
+                    width: 100%;
+                    a{
+                        font-size: 1.5em;
+                        width: 100%;
+                        text-align: left;
+                        color: pink;
+                    }
+                }
+                li:first-child{
+                    i{
+                        display: none;
+                    }
+                    flex-direction: column;
+                    #dropdown{
+                        width: 100%;
+                        display: flex;
+                        background-color: inherit;
+                        margin: 7px 0;
+                        padding: 0;
+                        li{
+                            margin-left: 20px;
+                            a{
+                                font-size: 1.5em;
+                                color: aqua;
+                                &:hover{
+                                    color: $color-secundario;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .nav-menu.active{
+                top: 81px;
+                transition: .3s ease;
+            }
+        }
+    }
+    .index-main{
+        .section-1{
+            h1{
+                font-size: 2.5rem;
+            }
+            div{
+               flex-wrap: wrap;
+               justify-content: center;
+               svg{
+                max-width: 400px;
+               }
+            }
+        }
+        .section-2{
+            .carousel {
+                width: 100%;
+                text-align: center;
+                position: relative;
+                gap: 2rem;
+                margin-bottom: 25%;
+                display: flex;
+                justify-content: center;
+                background-color: #000;
+                .allInputs{
+                    margin-top: 400px;
+                }
+                page{
+                    border-radius: 15px;
+                    background: linear-gradient(45deg, #393E464d,#5800FF4d);
+                    position: absolute;
+                    top: 2em;
+                    width: 96%;
+                    height: 410px;
+                    transition: transform 0.5s;
+                    transform: scale(0);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content:space-around;
+                    align-items: center;
+                    padding: 5% 1% .3% 1%;
+                    h3{
+                        font-size: 2em;
+                        font-family: "Space Mono", monospace;
+                    }
+                    div{
+                        gap: 2rem;
+                        height: 320px;
+                        display: flex;
+                        align-items: center;
+                        .card-text{
+                            gap: 0;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            justify-items: center;
+                            max-height: 320px;
+                            font-size: 1.2rem;
+                            max-width: 950px;
+                            p{
+                                font-size: 1.2rem;
+                            }
+                        }
+                        .small-text{
+                            margin-top: 2%;
+                            max-height: 320px;
+                            font-size: 1.2rem;
+                            max-width: 950px;
+                            overflow-y: scroll;
+                            &::-webkit-scrollbar{
+                                width: .45em;
+                                background: #1c1c1c;
+                            }
+                            &::-webkit-scrollbar-thumb{
+                                background-color: $color-principal-transparent;
+                                border-radius: 10px;
+                            }
+                        }
+
+                        img{
+                            margin-left: 1%;
+                            width: 220px;
+                            filter: drop-shadow(5px 5px 7px rgba(167, 152, 152, 0.7));
+                        }
+                }
+                }
+            }
+        }
+    }
+    .about-main{
+        div{
+            display: block;
+            height: auto;
+        }
+    }
+    section .social{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem .5rem;
+    }
+}
+@media screen and (max-width: 928px){
+    .index-main{
+        .section-2{
+            .carousel {
+                width: 100%;
+                text-align: center;
+                position: relative;
+                gap: 2rem;
+                margin-bottom: 25%;
+                display: flex;
+                justify-content: center;
+                background-color: #000;
+                .allInputs{
+                    margin-top: 500px;
+                }
+                page{
+                    border-radius: 15px;
+                    background: linear-gradient(45deg, #393E464d,#5800FF4d);
+                    position: absolute;
+                    top: 2em;
+                    width: 96%;
+                    height: 450px;
+                    transition: transform 0.5s;
+                    transform: scale(0);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content:space-around;
+                    align-items: center;
+                    padding: 5% 1% .3% 1%;
+                    .button{
+                        margin: 0;
+                    }
+                    h3{
+                        font-size: 2em;
+                        font-family: "Space Mono", monospace;
+                    }
+                    div{
+                        gap: 2rem;
+                        height: 410px;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        .card-text{
+                            gap: 0;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            justify-items: center;
+                            font-size: 1rem;
+                            max-width: 950px;
+                    }
+                }
+            }
+            }
+        }
+    }
+}
+@media screen and (max-width: 641px){
+    .index-main{
+        .section-1{
+            h1{
+                @include all-titles (.2em, 2.6rem);
+            }
+        }
+        .section-2{
+            .acuerdos{
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                "title"
+                "img"
+                "text";
+                img{
+                    max-width: 300px;
+                }
+                div{
+                    padding: 2%;
+                }
+            }
+        }
+    }
+    .index-main img, .faq-img{
+        width: 100%;
+    }
+
+    section .social{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem .5rem;
+    }
+    .exp-main div .responsive-img{
+        max-width: 75%;
+        height: auto;
+    }
+
+    .footer .footer__box .box__logo img{
+        @include rotate;
+    }
+
+}
+

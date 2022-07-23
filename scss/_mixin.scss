@@ -1,0 +1,150 @@
+@mixin title-animation($trans, $ease){
+  transform: translateY($trans);
+  animation-timing-function: $ease;
+}
+@mixin all-titles ($l-s, $f-s){
+  letter-spacing:$l-s;
+  font-size: $f-s;
+  line-height:7vh;
+  text-align: center;
+  text-shadow: $color-secundario 5px 3px 1px;
+	animation: title-animation 0.9s both;
+  @keyframes title-animation{
+    0% {@include title-animation(-45px, ease-in);}
+    40% {@include title-animation(-24px, ease-in);}
+    65% {@include title-animation(-12px, ease-in);}
+    82% {@include title-animation(-6px, ease-in);}
+    93% {@include title-animation(-4px, ease-in);}
+    25%,55%,75%,87% {@include title-animation(0px, ease-out);}
+    100% {@include title-animation(0px, ease-out);}
+  }
+  @media screen and (max-width: 641px){
+    font-size: 2rem;
+  }
+}
+@mixin img-entrance{
+  animation: img-entrance-kayframes 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  @keyframes img-entrance-kayframes{
+    0% {transform: translateZ(-150px) translateX(-150px);}
+    100% {transform: translateZ(0) translateX(0);}
+  }
+}
+@mixin img-heartbeat ($scale, $ease){
+  transform: scale($scale);
+  animation-timing-function: $ease;
+}
+@mixin rotate{
+  animation: rotate 2s infinite linear; 
+  @keyframes rotate{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg) ;}
+  }
+}
+@mixin social ($url-img, $gradient-1,$gradient-2,$b-f-button){
+  align-items: center;
+  border-radius: 40px;
+  padding: 1%;
+  max-width: 641px;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(120deg,$gradient-2) ;
+  .box{
+    box-shadow: 5px 5px 5px #000;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    justify-content: center;
+    &::before{
+      content: '';
+      position: absolute;
+      inset: -15px 80px;
+      transition: .5s;
+      animation: red-circle 4s infinite ease-in-out;
+      @keyframes red-circle{
+        0%{transform: rotate(0deg);}
+        100%{transform: rotate(360deg);}
+      }
+      background: linear-gradient($gradient-1);
+    }
+    &:hover::before{
+      inset: -25px 0px;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      background-color: #000000;
+      border-radius: 50%;
+      z-index: 1;
+      background-image: url($url-img);
+    }
+    div{
+      position: absolute;
+      inset: 5px;
+      z-index: 3;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+      object-fit:contain;
+      img{
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+        transition: .4s;
+        pointer-events: none;
+        z-index: 3;
+      }
+      h2{
+        position: relative;
+        font-size: 1.5em;
+        text-align:  center;
+      }
+      a{
+        outline: none;
+        text-decoration: none;
+        position: relative;
+        color: $b-f-button;
+        padding: 3%;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 5px;
+        border: $b-f-button solid 2px;
+        height: 40px;
+        &:hover{
+          color: #fff;
+          text-shadow: -3px 1px 2px rgba(1,1,1,0.48); 
+            &::after{
+              width: 100%;
+            }
+        }
+        &::after{
+          content: "";
+          position: absolute;
+          z-index: -1;
+          transition: all 0.3s ease;
+          height: 100%;
+          top: 0px;
+          left: 0px;
+          width: 0;
+          height: 100%;
+          background:$b-f-button;        
+        }
+      }
+    }
+    div img{
+      transition: .7s;
+    }
+    &:hover div img{
+      opacity: 0;
+    }
+  }
+}
